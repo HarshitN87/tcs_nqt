@@ -1,7 +1,3 @@
-TCS NQT Questions (Full Text From PDF, Sources Removed)
-
-Note: Question wording/details are preserved from the PDF extraction; only source lines were removed.
-
 Q1. Odd Occurring Element in O(log N) ■ VERIFIED PYQ [Hard]
 Given an array of integers where every element appears an even number of times except one
 element which appears an odd number of times, find that odd-occurring element in O(log N) time.
