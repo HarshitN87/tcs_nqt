@@ -57,12 +57,12 @@ Rahul is the total interest paid by him.
 
 ### Question 6
 
-If the 9 digit number 807x6y9z8 is divisible by 99, the value of
+If the 9 digit number 807x6y9z8 is divisible by 99, the value of $\sqrt{x+y+z}$ is:
 
 - 1. 6
-- 2.
+- 2. 5
 - 3. 4
-- 4.
+- 4. 3
 
 **Answer:** Option C - 4
 
@@ -122,10 +122,10 @@ And the expenditure increases by 40%, her savings decreases by:
 
 - A. 20%
 - B. 30%
-- C.
-- D.
+- C. 50%
+- D. 10%
 
-**Answer:** 10% decrease
+**Answer:** Option B - 30%
 
 ### Question 12
 
@@ -179,11 +179,9 @@ work on time by working 10 hrs per day.
 
 ### Question 16
 
-if a + b
-=
-, a + b =
+If $a + b = 2$, then the value of $a + b$ is:
 
-- A.
+- A. 3
 - B. 0
 - C. 2
 - D. 1
@@ -345,8 +343,8 @@ An article is sold at a certain price. If it is sold at 72% of this selling pric
 What is the profit percentage when it was sold at actual selling price?
 
 - A. 20%
-- B.
-- C.
+- B. 11 1/9%
+- C. 15%
 - D. 12%
 
 **Answer:** Option B - 11 1/9%

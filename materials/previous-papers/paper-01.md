@@ -44,7 +44,7 @@ note: the answer will be 45000 and the options provided in the exam we wrong.
 
 ### Question 4
 
-If 8^x+1 + 8^1-x = 20, then x = ?
+If 8^{x+1} + 8^{1-x} = 20, then x = ?
 
 - 1. ¼, -¼
 - 2. ½. -½

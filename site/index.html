@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCS NQT Practice Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  </head>
+  <body>
+    <header class="app-header" id="top">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="TCS NQT practice studio home">
+          <span class="brand__mark">NQT</span>
+          <span>Practice Studio</span>
+        </a>
+        <div class="topbar__actions">
+          <button class="text-button" id="darkModeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">☾ Dark Mode</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout">
+      
+      <!-- ═══ INTRODUCTION SECTION ═══ -->
+      <section class="intro-section" aria-labelledby="introTitle">
+        <div class="intro-head">
+          <div>
+            <p class="eyebrow">Everything you need to know</p>
+            <h2 id="introTitle">TCS NQT — Complete Exam Intelligence</h2>
+          </div>
+          <div class="source-actions">
+            <a class="source-link" href="https://github.com/Arjunpolen/TCS-NQT-PYQ-QUESTIONS/tree/main" target="_blank" rel="noreferrer">Pattern source</a>
+            <a class="source-link" href="https://github.com/Arjunpolen/TCS-NQT-PYQ-QUESTIONS/tree/main" target="_blank" rel="noreferrer">Salary source</a>
+          </div>
+        </div>
+
+        <!-- Hiring Tiers -->
+        <details class="intro-block" open>
+          <summary class="intro-block__title">Hiring Tiers & Packages</summary>
+          <div class="intro-block__content">
+            <p class="intro-note">TCS hires into three distinct packages based on NQT performance. No negative marking — fill every response.</p>
+            <div class="tier-stack">
+              <article class="tier-card tier-card--prime">
+                <div class="tier-card__badge">Prime</div>
+                <div class="tier-card__body">
+                  <strong>₹9 – ₹12 LPA</strong>
+                  <p>Flawless advanced aptitude (>80%) + both coding questions fully solved (7/7 test cases each). Zero margin for error — a single failed hidden test case drops you to Digital.</p>
+                </div>
+              </article>
+              <article class="tier-card tier-card--digital">
+                <div class="tier-card__badge">Digital</div>
+                <div class="tier-card__body">
+                  <strong>₹7 – ₹7.5 LPA</strong>
+                  <p>Advanced aptitude >70-75% + at least 1 coding question fully solved. Passing all hidden cases on the 50-mark algorithmic question alone can get you here even if you fail Q1 entirely.</p>
+                </div>
+              </article>
+              <article class="tier-card tier-card--ninja">
+                <div class="tier-card__badge">Ninja</div>
+                <div class="tier-card__body">
+                  <strong>₹3.36 – ₹3.6 LPA</strong>
+                  <p>Cleared basic cognitive cutoffs (~60%) + partial or empty coding responses. Fractional test case completion (5/7 or 6/7 on both questions) almost universally routes here.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </details>
+
+        <!-- Test Structure -->
+        <details class="intro-block">
+          <summary class="intro-block__title">Test Pattern & Section Breakdown</summary>
+          <div class="intro-block__content">
+            <p class="intro-note">The OA uses forced, individual question timers with a no-backtracking rule. Once you enter a coding question, you're locked in until the timer expires.</p>
+
+            <div class="section-card">
+              <h4>Section A: Foundation <span class="section-meta">65 questions · 75 minutes</span></h4>
+              <div class="vertical-table">
+                <div class="v-row">
+                  <div class="v-row__header">
+                    <span class="v-row__title">Numerical Ability</span>
+                    <div class="v-row__badges">
+                      <span class="v-row__badge">20 Qs</span>
+                      <span class="v-row__badge">25 Mins</span>
+                    </div>
+                  </div>
+                  <p class="v-row__desc">Massive bottleneck — most solve only 8-10 with confidence, guess the rest.</p>
+                </div>
+                <div class="v-row">
+                  <div class="v-row__header">
+                    <span class="v-row__title">Verbal Ability</span>
+                    <div class="v-row__badges">
+                      <span class="v-row__badge">25 Qs</span>
+                      <span class="v-row__badge">25 Mins</span>
+                    </div>
+                  </div>
+                  <p class="v-row__desc">Lengthy passages, reading comprehension, sentence completion, formal email drafts.</p>
+                </div>
+                <div class="v-row">
+                  <div class="v-row__header">
+                    <span class="v-row__title">Reasoning Ability</span>
+                    <div class="v-row__badges">
+                      <span class="v-row__badge">20 Qs</span>
+                      <span class="v-row__badge">25 Mins</span>
+                    </div>
+                  </div>
+                  <p class="v-row__desc">Moderate — seating arrangements, blood relations, syllogisms, data sufficiency.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <h4>Section B: Advanced <span class="section-meta">17 questions · 115 minutes</span></h4>
+              <div class="vertical-table">
+                <div class="v-row">
+                  <div class="v-row__header">
+                    <span class="v-row__title">Advanced Quant & Reasoning</span>
+                    <div class="v-row__badges">
+                      <span class="v-row__badge">15 Qs</span>
+                      <span class="v-row__badge">25 Mins</span>
+                    </div>
+                  </div>
+                  <p class="v-row__desc">Higher conceptual weight but more time per question. Permutations, probability, data sufficiency.</p>
+                </div>
+                <div class="v-row">
+                  <div class="v-row__header">
+                    <span class="v-row__title">Coding</span>
+                    <div class="v-row__badges">
+                      <span class="v-row__badge">2 Qs</span>
+                      <span class="v-row__badge">90 Mins</span>
+                    </div>
+                  </div>
+                  <p class="v-row__desc">Q1 (25 marks, ~35 min): basic math/arrays. Q2 (50 marks, ~45 min): Kadane's, DP, recursion.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Platform Constraints -->
+        <details class="intro-block">
+          <summary class="intro-block__title">Platform Constraints & Compiler Quirks</summary>
+          <div class="intro-block__content">
+            <div class="callout callout--warning">
+              <strong>The Blank Slate Notepad.</strong> The coding window is a completely blank canvas — zero autocomplete, no syntax highlighting, no linting, no auto-closing brackets. You must manually select your language from a dropdown and activate the console setup.
+            </div>
+            <ul class="info-list">
+              <li><strong>Execution Lag:</strong> During peak exam windows, the compiler suffers severe latency. The terminal can freeze or display a generic "executing" status, completely withholding test-case results until it's too late to debug.</li>
+              <li><strong>No Version Checkpoints:</strong> No backup or undo history. If your solution passes 3/7 test cases and you attempt a risky last-minute optimization, any error introduced right before the timer ends cannot be reverted — leaving you with zero marks for an otherwise salvageable solution.</li>
+              <li><strong>On-Screen Calculator:</strong> A basic system calculator is provided for aptitude, but manipulating it via mouse clicks slows down operations significantly.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Input Parsing -->
+        <details class="intro-block">
+          <summary class="intro-block__title">The Input-Parsing Trap</summary>
+          <div class="intro-block__content">
+            <div class="callout callout--danger">
+              <strong>This causes more failures than the actual core logic.</strong> Unlike LeetCode or campus tools that give you a pre-written driver function, TCS requires building the entire program from scratch — header files, main function, and raw stdin parsing.
+            </div>
+            <ul class="info-list">
+              <li><strong>Unstructured Arrays:</strong> The test engine frequently omits the initial integer specifying array size (N), passing only space-separated or comma-separated integers. Standard fixed loops crash if N is not provided.</li>
+              <li><strong>The Workaround:</strong> In C++, use <code>while(cin >> x)</code> or <code>getline</code> + <code>stringstream</code> to dynamically populate a vector. In Python, <code>.split()</code> and list comprehensions handle volatile input naturally.</li>
+              <li><strong>Language Preference:</strong> Reddit users strongly advocate using Python for the OA — parsing volatile inputs with <code>.split()</code> reduces boilerplate and minimizes errors under time pressure, provided you practice writing it without IDE assistance.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Output & Edge Cases -->
+        <details class="intro-block">
+          <summary class="intro-block__title">Output Formatting & Edge-Case Traps</summary>
+          <div class="intro-block__content">
+            <p class="intro-note">Public test cases carry zero score weight — your evaluation relies entirely on hidden test sets.</p>
+            <ul class="info-list">
+              <li><strong>Decimal Formatting:</strong> Codes that compute correct math fail because the engine expects values rounded to exactly 2 decimal places — or trailing zeros stripped completely (e.g., <code>11.00</code> must print as <code>"11"</code>, and <code>10.50</code> as <code>"10.5"</code>).</li>
+              <li><strong>String Literal Flags:</strong> Problems hide a conditional exception at the very bottom. If evaluation results in negative/invalid range, you must return exact strings like <code>"Error"</code> or <code>"Invalid range"</code>. Missing this single <code>if</code> block guarantees failure on majority of hidden cases.</li>
+              <li><strong>Arbitrary Boundaries:</strong> In range-filtering problems, hidden tests may require single-digit integers (numbers &lt; 10) to be skipped entirely based on an unstated backend rule.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Scoring & Routing -->
+        <details class="intro-block">
+          <summary class="intro-block__title">Scoring, Routing & The Partial Score Trap</summary>
+          <div class="intro-block__content">
+            
+            <div class="vertical-table">
+              <div class="v-row">
+                <div class="v-row__header">
+                  <span class="badge badge--prime">Prime</span>
+                </div>
+                <div class="v-row__details">
+                  <div class="v-row__detail-item"><strong>Coding:</strong> 2/2 questions fully solved, 100% hidden cases on both</div>
+                  <div class="v-row__detail-item"><strong>Aptitude:</strong> Advanced >80%, Standard high accuracy</div>
+                </div>
+              </div>
+              <div class="v-row">
+                <div class="v-row__header">
+                  <span class="badge badge--digital">Digital</span>
+                </div>
+                <div class="v-row__details">
+                  <div class="v-row__detail-item"><strong>Coding:</strong> 1/2 fully solved + partials on the other</div>
+                  <div class="v-row__detail-item"><strong>Aptitude:</strong> Advanced >70-75%, Standard positive baseline</div>
+                </div>
+              </div>
+              <div class="v-row">
+                <div class="v-row__header">
+                  <span class="badge badge--ninja">Ninja</span>
+                </div>
+                <div class="v-row__details">
+                  <div class="v-row__detail-item"><strong>Coding:</strong> 0-1 questions partially solved</div>
+                  <div class="v-row__detail-item"><strong>Aptitude:</strong> Standard cognitive >60% minimum</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout callout--warning">
+              <strong>The Easy/Hard Paradox.</strong> Many candidates pass 7/7 on the complex 50-mark question but score 0/7 on the basic 25-mark question due to input formatting bugs. A flat zero on the implementation problem flags you as a "foundational failure" — systematically stripping Prime eligibility and routing you to Ninja regardless of algorithmic performance.
+            </div>
+
+            <ul class="info-list">
+              <li><strong>The "One-Question" Digital Path:</strong> If you completely fail Q1 but ace Q2 (50 marks, 100% test cases), the system automatically shortlists you for Digital, bypassing the Q1 failure.</li>
+              <li><strong>Partial Score Penalty:</strong> Passing 6/7 on both questions mathematically scores higher than solving just one, but the routing logic penalizes incomplete execution — fractional completion on both problems drops you to Ninja, because the filter looks for absolute success on high-value problems.</li>
+              <li><strong>Aptitude as Gatekeeper:</strong> Even with flawless 2/2 coding, if your advanced aptitude falls below ~80%, the system demotes you from Prime to Digital retroactively.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <!-- ═══ DASHBOARD SECTION ═══ -->
+      <section class="dashboard-section" aria-label="Study dashboard">
+        <div class="dashboard-panel">
+          
+          <!-- Search and Study Mode stacked vertically -->
+          <div class="control-row">
+            <div class="control-group">
+              <label class="field-label" for="searchInput">Search</label>
+              <input id="searchInput" class="search" type="search" placeholder="Topic, formula, code, paper..." autocomplete="off" />
+            </div>
+            
+            <div class="control-group">
+              <p class="field-label">Study mode</p>
+              <div class="filter-list" id="filterList"></div>
+            </div>
+          </div>
+
+          <!-- Document List (Vertical stack) -->
+          <div class="control-group sources-group">
+            <p class="field-label">Sources & PYQs</p>
+            <div class="document-strip" id="documentStrip"></div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-panel-wrapper">
+            <p class="field-label">Overview Stats</p>
+            <div class="stats-grid" id="statsGrid"></div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- ═══ PRACTICE BOARD ═══ -->
+      <section class="practice-board" aria-labelledby="viewTitle">
+        <div class="toolbar">
+          <div>
+            <p class="eyebrow">Question bank</p>
+            <h2 id="viewTitle">All Practice</h2>
+          </div>
+          <div class="toolbar__right">
+            <button class="text-button" id="openDocument" type="button" hidden>Open raw source</button>
+            <div class="toolbar__meta" id="resultMeta"></div>
+          </div>
+        </div>
+        <div class="entry-list" id="entryList"></div>
+        
+        <article class="reader" id="reader" hidden>
+          <div class="reader__bar">
+            <button class="text-button" id="backToEntries" type="button">Back to practice</button>
+            <span id="readerMeta"></span>
+            <a class="source-link" id="rawGithubLink" href="https://github.com/Arjunpolen/TCS-NQT-PYQ-QUESTIONS/tree/main" target="_blank" rel="noreferrer">GitHub Source</a>
+          </div>
+          <div class="markdown-body" id="readerBody"></div>
+        </article>
+      </section>
+      
+    </main>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
