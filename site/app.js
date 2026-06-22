@@ -5,13 +5,17 @@ const state = {
   query: "",
   group: "All",
   documentId: "All",
+  difficulty: "All",
   expanded: new Set(),
+  solved: new Set(JSON.parse(localStorage.getItem("nqt-solved") || "[]")),
 };
 
 const groups = ["All", "Aptitude", "Coding", "Previous Papers", "Interview"];
+const difficulties = ["All", "Easy", "Medium", "Hard"];
 
 const statsGrid = document.querySelector("#statsGrid");
 const filterList = document.querySelector("#filterList");
+const difficultyFilterList = document.querySelector("#difficultyFilterList");
 const documentStrip = document.querySelector("#documentStrip");
 const entryList = document.querySelector("#entryList");
 const searchInput = document.querySelector("#searchInput");
@@ -206,6 +210,24 @@ function renderFilters() {
     .join("");
 }
 
+function renderDifficulties() {
+  difficultyFilterList.innerHTML = difficulties
+    .map((diff) => {
+      const active = diff === state.difficulty ? "is-active" : "";
+      const query = state.query.trim().toLowerCase();
+      const count = allEntries.filter((entry) => {
+        const groupMatch = state.group === "All" || entry.group === state.group;
+        const doc = archive.documents.find((item) => item.path === entry.docPath);
+        const docMatch = state.documentId === "All" || doc.id === state.documentId;
+        const queryMatch = !query || entry.searchable.includes(query);
+        const diffMatch = diff === "All" || (entry.difficulty && entry.difficulty.toLowerCase() === diff.toLowerCase());
+        return groupMatch && docMatch && queryMatch && diffMatch;
+      }).length;
+      return `<button class="filter ${active}" type="button" data-difficulty="${escapeHtml(diff)}"><span>${escapeHtml(diff)}</span><b>${count}</b></button>`;
+    })
+    .join("");
+}
+
 function renderDocuments() {
   const docs = archive.documents.filter((doc) => state.group === "All" || doc.group === state.group);
   const allActive = state.documentId === "All" ? "is-active" : "";
@@ -225,7 +247,8 @@ function getVisibleEntries() {
     const doc = archive.documents.find((item) => item.path === entry.docPath);
     const docMatch = state.documentId === "All" || doc.id === state.documentId;
     const queryMatch = !query || entry.searchable.includes(query);
-    return groupMatch && docMatch && queryMatch;
+    const diffMatch = state.difficulty === "All" || (entry.difficulty && entry.difficulty.toLowerCase() === state.difficulty.toLowerCase());
+    return groupMatch && docMatch && queryMatch && diffMatch;
   });
 }
 
@@ -276,16 +299,19 @@ function renderEntries() {
       const difficultyBadge = entry.difficulty ? `<span class="lc-badge lc-badge--${entry.difficulty.toLowerCase()}">${entry.difficulty}</span>` : "";
       const verifiedBadge = entry.verified ? `<span class="lc-badge lc-badge--verified">Verified PYQ</span>` : "";
       return `
-        <article class="entry-card ${open ? "is-open" : ""} is-${entry.kind}">
-          <button class="entry-card__summary" type="button" data-toggle="${entry.id}">
-            <span class="entry-card__number">${String(index + 1).padStart(2, "0")}</span>
-            <span class="entry-card__main">
-              <span class="entry-card__kicker"><b>${escapeHtml(typeLabel)}</b> ${escapeHtml(entry.group)} / ${escapeHtml(entry.track)} / ${escapeHtml(entry.section)}</span>
-              <strong>${inlineMarkdown(entry.title)} ${difficultyBadge} ${verifiedBadge}</strong>
-              <em>${inlineMarkdown(entry.excerpt || "Open for the full question and practice material.")}</em>
-            </span>
-            <span class="entry-card__plus">${open ? "Close" : "Open"}</span>
-          </button>
+        <article class="entry-card ${open ? "is-open" : ""} is-${entry.kind} ${state.solved.has(entry.id) ? "is-solved" : ""}">
+          <div class="entry-card__header-row">
+            <button class="entry-card__check ${state.solved.has(entry.id) ? "is-solved" : ""}" type="button" data-solve="${entry.id}" title="Mark as solved" aria-label="Mark as solved">✓</button>
+            <button class="entry-card__summary" type="button" data-toggle="${entry.id}">
+              <span class="entry-card__number">${String(index + 1).padStart(2, "0")}</span>
+              <span class="entry-card__main">
+                <span class="entry-card__kicker"><b>${escapeHtml(typeLabel)}</b> ${escapeHtml(entry.group)} / ${escapeHtml(entry.track)} / ${escapeHtml(entry.section)}</span>
+                <strong>${inlineMarkdown(entry.title)} ${difficultyBadge} ${verifiedBadge}</strong>
+                <em>${inlineMarkdown(entry.excerpt || "Open for the full question and practice material.")}</em>
+              </span>
+              <span class="entry-card__plus">${open ? "Close" : "Open"}</span>
+            </button>
+          </div>
           <div class="entry-card__body" ${open ? "" : "hidden"}>
             <div class="question-panel">
               <div class="markdown-body">${markdownToHtml(entry.questionMarkdown)}</div>
@@ -327,11 +353,31 @@ function hideReader() {
   documentStrip.hidden = false;
 }
 
+function renderProgress() {
+  const total = allEntries.length;
+  const solved = state.solved.size;
+  const percent = total > 0 ? Math.round((solved / total) * 100) : 0;
+  const progressContainer = document.querySelector("#progressContainer");
+  if (progressContainer) {
+    progressContainer.innerHTML = `
+      <div class="progress-header">
+        <span>Practice Progress</span>
+        <span>${solved} / ${total} Solved (${percent}%)</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" style="width: ${percent}%;"></div>
+      </div>
+    `;
+  }
+}
+
 function rerender() {
   hideReader();
   renderFilters();
+  renderDifficulties();
   renderDocuments();
   renderEntries();
+  renderProgress();
 }
 
 renderStats();
@@ -339,6 +385,7 @@ rerender();
 
 searchInput.addEventListener("input", (event) => {
   state.query = event.target.value;
+  renderDifficulties();
   renderEntries();
 });
 
@@ -347,6 +394,15 @@ filterList.addEventListener("click", (event) => {
   if (!button) return;
   state.group = button.dataset.group;
   state.documentId = "All";
+  state.difficulty = "All";
+  state.expanded.clear();
+  rerender();
+});
+
+difficultyFilterList.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-difficulty]");
+  if (!button) return;
+  state.difficulty = button.dataset.difficulty;
   state.expanded.clear();
   rerender();
 });
@@ -361,6 +417,26 @@ documentStrip.addEventListener("click", (event) => {
 });
 
 entryList.addEventListener("click", async (event) => {
+  const solve = event.target.closest("[data-solve]");
+  if (solve) {
+    const id = solve.dataset.solve;
+    if (state.solved.has(id)) {
+      state.solved.delete(id);
+    } else {
+      state.solved.add(id);
+    }
+    localStorage.setItem("nqt-solved", JSON.stringify(Array.from(state.solved)));
+    
+    const card = solve.closest(".entry-card");
+    if (card) card.classList.toggle("is-solved", state.solved.has(id));
+    solve.classList.toggle("is-solved", state.solved.has(id));
+    
+    renderProgress();
+    renderFilters();
+    renderDifficulties();
+    return;
+  }
+
   const copy = event.target.closest("[data-copy-code]");
   if (copy) {
     const code = document.getElementById(copy.dataset.copyCode);

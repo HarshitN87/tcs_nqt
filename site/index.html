@@ -236,7 +236,7 @@
       <section class="dashboard-section" aria-label="Study dashboard">
         <div class="dashboard-panel">
           
-          <!-- Search and Study Mode stacked vertically -->
+          <!-- Search, Study Mode and Difficulty -->
           <div class="control-row">
             <div class="control-group">
               <label class="field-label" for="searchInput">Search</label>
@@ -246,6 +246,11 @@
             <div class="control-group">
               <p class="field-label">Study mode</p>
               <div class="filter-list" id="filterList"></div>
+            </div>
+
+            <div class="control-group">
+              <p class="field-label">Difficulty</p>
+              <div class="filter-list" id="difficultyFilterList"></div>
             </div>
           </div>
 
@@ -259,6 +264,7 @@
           <div class="stats-panel-wrapper">
             <p class="field-label">Overview Stats</p>
             <div class="stats-grid" id="statsGrid"></div>
+            <div class="progress-container" id="progressContainer"></div>
           </div>
           
         </div>
